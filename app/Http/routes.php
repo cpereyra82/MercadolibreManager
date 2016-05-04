@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware'=>['web']],function(){
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::auth();
+    Route::resource('products','ProductsController');
+
+    Route::resource('item','ItemsController');
+    Route::get('/home', 'HomeController@index');
+
+
+
 });
+Route::post('/reporting', ['uses' =>'ReportesController@post']);
+Route::get('/reporting', ['uses' =>'ReportesController@index', 'as' => 'reportes.index']);

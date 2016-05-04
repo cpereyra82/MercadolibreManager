@@ -6,7 +6,11 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.2.*",
+        "barryvdh/laravel-ide-helper": "v2.1.4",
+        "laravelcollective/html": "v5.2.4",
+        "laracasts/flash": "2.0.0",
+        "lavela/phpjasper": "v1.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
