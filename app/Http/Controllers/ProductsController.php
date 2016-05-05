@@ -26,6 +26,24 @@ class ProductsController extends Controller
     }
 
 
+    public function procesar(Request $request)
+    {
+
+        $procesar=$request->get('procesar');
+
+        $estado='SIN PROCESAR';
+        if(is_array($procesar))
+        {
+
+
+            $productsUp=   Product::whereIn('id',$procesar)->update(['status'=>'PROCESADO']);
+
+        }
+        // dd($estado);
+        $products=Product::search( $estado)->orderBy('created_at')->paginate(10);
+        // dd($products);
+        return view('products.index',compact('products'))->with('status',$estado);
+    }
 
 
     /**

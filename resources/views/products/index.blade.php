@@ -12,9 +12,11 @@
 
 
         {!! Form::close() !!}
+        {!! Form::open([ 'route'=>'products.procesar','method'=>'POST','class'=>'navbar-form pull-right' ]) !!}
         <table class="table table-bordered" id="productos">
             <thead>
-            <th>Id</th>
+            <th>&nbsp;</th>
+            <th>ID</th>
             <th>Titulo</th>
             <th>Descripcion</th>
             <th>Estado</th>
@@ -23,6 +25,7 @@
             <tbody>
             @foreach($products as $product)
                 <tr>
+                    <td>{!! Form::checkbox('procesar[]',$product->id) !!}</td>
                     <td>{{$product->id}}</td>
                     <td>{{$product->title}}</td>
                     <td>{{$product->description}}</td>
@@ -37,13 +40,18 @@
             </tbody>
         </table>
         {!! $products->appends(['status'=>$status])->render() !!}
-        <div class="center">
+        <div class="row">
             <a href=" {{ route('reportes.index') }} "
                class="btn btn-success" >Reporte</a>
+            <div class="form-group">
+                {!! Form::submit('Procesar',['class'=>'btn btn-primary']) !!}
+
+            </div>
         </div>
+        {!! Form::close() !!}
     </div>
 
-    </div>
+
 @endsection
 @section('js')
     <script>

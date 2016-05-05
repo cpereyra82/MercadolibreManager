@@ -18,6 +18,9 @@ Route::group(['middleware'=>['web']],function(){
 
     Route::auth();
     Route::resource('products','ProductsController');
+    Route::post('products/procesar',[
+        'uses' 	=> 'ProductsController@procesar',
+        'as'	=> 	'products.procesar']);
 
     Route::resource('item','ItemsController');
     Route::get('/home', 'HomeController@index');

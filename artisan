@@ -14,7 +14,15 @@
 */
 
 require __DIR__.'/bootstrap/autoload.php';
-
+//Start - Code to allow PhpStorm CLI
+if (isset($argv[1], $argv[2]) &&
+    $argv[1] === 'list' &&
+    $argv[2] === '--xml'
+) {
+    $argv[2] = '--format=xml';
+    $_SERVER['argv'] = $argv;
+}
+//End - Code to allow PhpStorm CLI
 $app = require_once __DIR__.'/bootstrap/app.php';
 
 /*
