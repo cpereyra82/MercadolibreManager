@@ -25,8 +25,7 @@ Route::group(['middleware'=>['web']],function(){
     Route::resource('item','ItemsController');
     Route::get('/home', 'HomeController@index');
 
-
+    Route::post('/reporting', ['uses' =>'ReportesController@post']);
+    Route::get('/reporting', ['uses' =>'ReportesController@index', 'as' => 'reportes.index']);
 
 });
-Route::post('/reporting', ['uses' =>'ReportesController@post']);
-Route::get('/reporting', ['uses' =>'ReportesController@index', 'as' => 'reportes.index']);

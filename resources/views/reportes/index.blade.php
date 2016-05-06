@@ -12,7 +12,7 @@
                         <th>Titulo</th>
                         <th>Descripcion</th>
                         <th>Estado</th>
-
+                        <th>Detalle</th>
                         </thead>
                         <tbody>
                         @foreach($products as $product)
@@ -21,7 +21,8 @@
                                 <td>{{$product->title}}</td>
                                 <td>{{$product->description}}</td>
                                 <td>{{$product->status}}</td>
-
+                             <td><a href=" {{ route('item.edit',$product->id) }} "
+                                    class="btn btn-warning" ><span class="glyphicon glyphicon-wrench" aria-hidden="true" /></a></td>
                             </tr>
                         @endforeach
                         </tbody>

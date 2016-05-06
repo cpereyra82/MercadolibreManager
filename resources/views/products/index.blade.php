@@ -16,7 +16,6 @@
         <table class="table table-bordered" id="productos">
             <thead>
             <th>&nbsp;</th>
-            <th>ID</th>
             <th>Titulo</th>
             <th>Descripcion</th>
             <th>Estado</th>
@@ -26,13 +25,12 @@
             @foreach($products as $product)
                 <tr>
                     <td>{!! Form::checkbox('procesar[]',$product->id) !!}</td>
-                    <td>{{$product->id}}</td>
                     <td>{{$product->title}}</td>
                     <td>{{$product->description}}</td>
                     <td>{{$product->status}}</td>
                     <td>
                         <a href=" {{ route('item.edit',$product->id) }} "
-                           class="btn btn-warning" ><span class="glyphicon glyphicon-wrench" aria-hidden="true" /></a>
+                           class="btn btn-warning" ><span class="glyphicon glyphicon-zoom-in" aria-hidden="true" /></a>
 
                     </td>
                 </tr>
@@ -41,8 +39,7 @@
         </table>
         {!! $products->appends(['status'=>$status])->render() !!}
         <div class="row">
-            <a href=" {{ route('reportes.index') }} "
-               class="btn btn-success" >Reporte</a>
+
             <div class="form-group">
                 {!! Form::submit('Procesar',['class'=>'btn btn-primary']) !!}
 

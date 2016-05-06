@@ -35,10 +35,6 @@
         </table>
 
         @endif
-        <div class="row">
-            <a href=" {{ route('products.index') }} "
-               class="btn btn-success" >Volver</a>
-        <a href=" {{ route('reportes.index') }} "
-           class="btn btn-success" >Reporte</a></div>
+
     </div>
 @endsection

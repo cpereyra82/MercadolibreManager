@@ -24,26 +24,30 @@ class ReportesController extends Controller
     public function post()
     {
 
-
+        $jasper = new JasperPHP;
        // $output = public_path() . '\reports\\'.time().'_pruebaProducto';
 
 
         // Compile a JRXML to Jasper
-     //   $jasper->compile( public_path() . '/reports/pruebaProducto.jasper.jrxml')->execute();
+
 
         $database = \Config::get('database.connections.mysql');
         $ext="pdf";
 
-        $input =  public_path().'\reports\pruebaProducto.jasper';
+        $input =  public_path().'\reports\pruebaProductos.jasper';
+        $input2 =  public_path().'\reports\item.jasper';
 
-       $output =  public_path().'\reports\\'.time().'_pruebaProducto';
+       $output =  public_path().'\reports\\'.time().'_pruebaProductos';
         //$data_file = public_path() . '/reports/CancelAck.xml';
         //$driver = 'xml';
         //$xml_xpath = '/CancelResponse/CancelResult/ID';
         //$jasper = new JasperPHP;
 
+       // $jasper->compile( public_path() . '/reports/pruebaProductos.jrxml')->execute();
+       //dd($jasper);
+       // $jasper->list_parameters(public_path().'\reports\item.jasper');
 
-        $jasper = new JasperPHP;
+       // $x=
           $jasper->process(
              $input,
              $output,
@@ -64,10 +68,10 @@ class ReportesController extends Controller
             false,
             false)*/
 
-               ->execute();
-       //   ->output();
-      //  dd($database);
-     //   dd($x);
+              ->execute();
+       //  ->output();
+
+        //dd($x);
        /*  $ext = "pdf";
          $data_file =public_path() . '\reports\pruebaProducto.jasper';
          $driver = 'jasper';
@@ -86,7 +90,7 @@ class ReportesController extends Controller
 
         header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename='.time().'_pruebaProducto.'.$ext);
+        header('Content-Disposition: attachment; filename='.time().'_productos.'.$ext);
         header('Content-Transfer-Encoding: binary');
         header('Expires: 0');
         header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
