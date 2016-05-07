@@ -27,5 +27,5 @@ Route::group(['middleware'=>['web']],function(){
 
     Route::post('/reporting', ['uses' =>'ReportesController@post']);
     Route::get('/reporting', ['uses' =>'ReportesController@index', 'as' => 'reportes.index']);
-
+    Route::get('/reporting/excel', ['uses' =>'ReportesController@toExcel', 'as' => 'reportes.excel']);
 });

@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Product;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Redirect;
 use JasperPHP\JasperPHP as JasperPHP;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class ReportesController extends Controller
 {
@@ -20,7 +24,24 @@ class ReportesController extends Controller
 
 
     }
+    public function toExcel(){
 
+        $excel = App::make('excel');
+        Excel::create('Productos', function($excel) {
+
+            $excel->sheet('Productos', function($sheet) {
+                $products=Product::where ('status','PROCESADO')->get();
+                //Product:: search( 'PROCESADO')->orderBy('created_at');
+
+
+              //  dd($products);
+                $sheet->fromArray($products);
+
+            });
+
+        })->export('xls');
+      //  return redirect('reportes.index');
+    }
     public function post()
     {
 

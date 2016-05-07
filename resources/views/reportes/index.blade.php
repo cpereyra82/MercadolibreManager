@@ -8,23 +8,23 @@
                     <div class="panel-heading">Reportes</div>
                     <table class="table table-bordered" id="productos">
                         <thead>
-                        <th>Id</th>
-                        <th>Titulo</th>
-                        <th>Descripcion</th>
-                        <th>Estado</th>
-                        <th>Detalle</th>
+                            <th>Id</th>
+                            <th>Titulo</th>
+                            <th>Descripcion</th>
+                            <th>Estado</th>
+                            <th>Detalle</th>
                         </thead>
                         <tbody>
-                        @foreach($products as $product)
-                            <tr>
-                                <td>{{$product->id}}</td>
-                                <td>{{$product->title}}</td>
-                                <td>{{$product->description}}</td>
-                                <td>{{$product->status}}</td>
-                             <td><a href=" {{ route('item.edit',$product->id) }} "
-                                    class="btn btn-warning" ><span class="glyphicon glyphicon-wrench" aria-hidden="true" /></a></td>
-                            </tr>
-                        @endforeach
+                            @foreach($products as $product)
+                                <tr>
+                                    <td>{{$product->id}}</td>
+                                    <td>{{$product->title}}</td>
+                                    <td>{{$product->description}}</td>
+                                    <td>{{$product->status}}</td>
+                                    <td><a href=" {{ route('item.edit',$product->id) }} "
+                                        class="btn btn-warning" ><span class="glyphicon glyphicon-wrench" aria-hidden="true" /></a></td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     {!! $products->render() !!}
@@ -38,6 +38,8 @@
                                 <div class="col-sm-offset-3 col-sm-5">
 
                                     <button type="submit" class="btn btn-primary">Generar</button>
+                                    <a href=" {{ route('reportes.excel') }} "
+                                       class="btn btn-warning" >excel</a>
                                 </div>
                             </div>
                         </form>
